@@ -1,0 +1,171 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+HTML {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+BODY {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./img/wood_1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container {
+    margin-top: 0px;
+    max-width: 60rem;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* -------- controls-style -------- */
+:root {
+    --text-color: white;
+    --text-active-color: rgb(254, 227, 140);
+}
+
+[rel="control.panel-menu"] {
+    width: 100%;
+    position: relative;
+    font-size: 1rem;
+
+    & .content {
+        background: radial-gradient(rgb(52, 53, 57), rgb(33, 34, 36));
+        height: 3rem;
+        box-shadow: inset 1px 1px 2px 0px rgba(164, 164, 165, 0.5), 2px 2px 4px rgba(26, 25, 25, 0.6);
+        text-shadow: 1px 1px 1px rgb(26, 25, 25);
+        position: relative;
+    }
+
+    & UL {
+        width: 100%;
+        display: flex;
+        color: var(--text-color);
+        position: relative;
+    }
+
+    & LI {
+        position: relative;
+        min-height: 2.25rem;
+        padding: 0.75rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem; 
+        list-style-type: none;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:not(.disabled):hover {
+            color: var(--text-active-color);
+        }
+    }
+
+    & UL.first-level {
+        height: 100%;
+        justify-content: space-between;
+        position: relative;
+
+        & > LI {
+            height: 100%;
+            position: relative;
+        }
+    }
+
+    & UL.second-level {
+        width: 100%;
+        height: 0;
+        display: block;
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity 0s ease 0s;
+
+        &.isShowed {
+            height: auto;
+            opacity: 1;
+            overflow: visible;
+            transition: opacity 75ms ease 50ms;
+        }
+
+        & LI {
+            min-height: 2.25rem;
+            width: 100%;
+            padding: 0.75rem;
+
+            &:last-child {
+                border-bottom-left-radius: 0.125rem;
+                border-bottom-right-radius: 0.125rem;
+            }
+
+            &:has(>.third-level) {
+                &::after {
+                    content: '▶';
+                    font-size: 0.75rem;
+                    position: absolute;
+                    top: 0.75rem;
+                    right: 0.75rem;
+                }
+            }
+
+            &:not(.disabled):hover {
+                & UL.third-level {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: -100%;
+                    background-color: rgb(39, 41, 43);
+                    box-shadow: inset 1px 1px 1px 0px rgba(8, 8, 8, 0.2), 2px 2px 4px rgba(26, 25, 25, 0.6);
+                    border-radius: 0.125rem;
+                }
+            }
+        }
+    }
+
+    & UL.third-level {
+        display: none;
+    }
+
+    & .plate {
+        background-color: rgb(39, 41, 43);
+        position: absolute;
+        top: -0.25rem;
+        border-radius: 0.125rem;
+        box-shadow: inset 1px 1px 1px 0px rgba(164, 164, 165, 0.4), 2px 2px 4px rgba(26, 25, 25, 0.6);
+        transition: height 0.1s ease, left 0.15s ease;
+
+        &.isShowed {
+            & .decor {
+                content: url('./img/triangle_0.svg');
+                width: 2.25rem;
+                height: auto;
+                position: absolute;
+                top: -7px;
+                left: calc(50% - 1rem);
+                z-index: 1000;
+            }
+        }
+    }
+
+    & .icon {
+        width: 1.5rem;
+        text-align: center;
+    }
+}
