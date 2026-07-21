@@ -13,3 +13,13 @@ Perfect for portfolios, landing pages, or any project that needs a memorable UI.
 - **HTML5** – semantic markup, accessibility attributes.
 - **CSS3** – Flexbox/Grid, custom properties, `@keyframes`, transitions, filters.
 - **Vanilla JavaScript (ES6)** – event handling, animation, class manipulation, coordinate calculations for parallax.
+
+## Getting Started
+
+To run this project locally:
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/Florence100/panel_menu.git
+   ```
+2. Open `index.html` in your browser.
